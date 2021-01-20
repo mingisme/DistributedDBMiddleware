@@ -22,10 +22,8 @@ class DistributedDbMiddlewareApplicationTests {
 	@Test
 	public void testSelect() {
 		System.out.println(("----- selectAll method test ------"));
-		User user = new User();
-//		user.setAge(20);
-		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
-		queryWrapper.gt("age",21);
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+		queryWrapper.lambda().gt(User::getAge,21);
 		List<User> userList = userMapper.selectList(queryWrapper);
 		assertEquals(2, userList.size());
 		userList.forEach(System.out::println);
