@@ -1,6 +1,6 @@
-package com.baomidou.ant.hello.service;
+package com.swang.ddbm.helo.service;
 
-import com.baomidou.ant.hello.entity.User;
+import com.swang.ddbm.helo.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

@@ -1,7 +1,10 @@
 package com.swang.distributeddbmiddleware;
 
-import com.swang.distributeddbmiddleware.mapper.UserMapper;
-import com.swang.distributeddbmiddleware.model.User;
+
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.swang.ddbm.helo.entity.User;
+import com.swang.ddbm.helo.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,8 +22,12 @@ class DistributedDbMiddlewareApplicationTests {
 	@Test
 	public void testSelect() {
 		System.out.println(("----- selectAll method test ------"));
-		List<User> userList = userMapper.selectList(null);
-		assertEquals(5, userList.size());
+		User user = new User();
+//		user.setAge(20);
+		QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+		queryWrapper.gt("age",21);
+		List<User> userList = userMapper.selectList(queryWrapper);
+		assertEquals(2, userList.size());
 		userList.forEach(System.out::println);
 	}
 

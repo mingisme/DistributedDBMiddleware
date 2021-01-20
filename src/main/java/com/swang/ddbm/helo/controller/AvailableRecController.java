@@ -1,4 +1,4 @@
-package com.baomidou.ant.hello.controller;
+package com.swang.ddbm.helo.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-01-20
  */
 @RestController
-@RequestMapping("/hello/user")
-public class UserController {
+@RequestMapping("/helo/available-rec")
+public class AvailableRecController {
 
 }

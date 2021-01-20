@@ -1,4 +1,4 @@
-package com.baomidou.ant.hello.entity;
+package com.swang.ddbm.helo.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * @since 2021-01-20
  */
 @Data
-public class User  {
+public class User {
 
     private static final long serialVersionUID = 1L;
 

@@ -1,6 +1,6 @@
-package com.baomidou.ant.hello.mapper;
+package com.swang.ddbm.helo.mapper;
 
-import com.baomidou.ant.hello.entity.User;
+import com.swang.ddbm.helo.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

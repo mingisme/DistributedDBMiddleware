@@ -1,8 +1,8 @@
-package com.baomidou.ant.hello.service.impl;
+package com.swang.ddbm.helo.service.impl;
 
-import com.baomidou.ant.hello.entity.User;
-import com.baomidou.ant.hello.mapper.UserMapper;
-import com.baomidou.ant.hello.service.IUserService;
+import com.swang.ddbm.helo.entity.User;
+import com.swang.ddbm.helo.mapper.UserMapper;
+import com.swang.ddbm.helo.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
