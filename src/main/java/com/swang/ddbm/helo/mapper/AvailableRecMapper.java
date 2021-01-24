@@ -2,6 +2,9 @@ package com.swang.ddbm.helo.mapper;
 
 import com.swang.ddbm.helo.entity.AvailableRec;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.swang.ddbm.helo.entity.User;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2021-01-20
  */
 public interface AvailableRecMapper extends BaseMapper<AvailableRec> {
+
+    List<AvailableRec> selectByUserName(User user);
 
 }

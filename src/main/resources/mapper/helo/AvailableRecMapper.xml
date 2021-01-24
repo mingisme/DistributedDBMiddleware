@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.swang.ddbm.helo.mapper.AvailableRecMapper">
-
+    <select id="selectByUserName" resultType="com.swang.ddbm.helo.entity.AvailableRec">
+        select * from available_rec rec inner join user u
+        on u.id=rec.owner_id
+        where u.name=#{name}
+    </select>
 </mapper>
