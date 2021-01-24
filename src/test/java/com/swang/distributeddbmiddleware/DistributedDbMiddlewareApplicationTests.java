@@ -189,4 +189,27 @@ class DistributedDbMiddlewareApplicationTests {
         List<AvailableRec> availableRecs = availableRecMapper.selectByUserName(user);
         availableRecs.forEach(System.out::println);
     }
+
+    /**
+     * 读写分离
+     */
+    @Test
+    public void testReadAndWrite() {
+        for(int i=100;i<110;i++){
+            System.out.println(("----- Add user ------"));
+            User user = new User();
+            user.setAge(i + new Random(17).nextInt(90));
+            user.setEmail("a" + i + "@email.com");
+            user.setName("a" + i);
+            System.out.println(user);
+            userMapper.insert(user);
+        }
+
+        for(int i=0;i<10;i++){
+            System.out.println(("----- select all user ------"));
+            QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+            List<User> userList = userMapper.selectList(queryWrapper);
+            userList.forEach(System.out::println);
+        }
+    }
 }
