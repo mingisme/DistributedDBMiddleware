@@ -142,6 +142,8 @@ class DistributedDbMiddlewareApplicationTests {
      */
     @Test
     public void testSelectRECByUserId() {
+        System.out.println(("----- select rec by user id ------"));
+
         QueryWrapper<AvailableRec> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(AvailableRec::getOwnerId,560135781159534592L);
         List<AvailableRec> availableRecs = availableRecMapper.selectList(queryWrapper);
@@ -154,6 +156,7 @@ class DistributedDbMiddlewareApplicationTests {
      */
     @Test
     public void testSelectRECById() {
+        System.out.println(("----- select rec by id ------"));
         AvailableRec availableRec = availableRecMapper.selectById(1353276633368248321L);
         assertNotNull(availableRec);
         System.out.println(availableRec);
@@ -164,6 +167,7 @@ class DistributedDbMiddlewareApplicationTests {
      */
     @Test
     public void testSelectRECViaPagination() {
+        System.out.println(("----- select paginated rec ------"));
         Page<AvailableRec> page = new Page<>(4,1);
         Page<AvailableRec> availableRecPage = availableRecMapper.selectPage(page, new QueryWrapper<>());
 
@@ -179,7 +183,7 @@ class DistributedDbMiddlewareApplicationTests {
      */
     @Test
     public void testSelectRECByUserName() {
-
+        System.out.println(("----- select rec and join user ------"));
         User user = new User();
         user.setName("a0");
         List<AvailableRec> availableRecs = availableRecMapper.selectByUserName(user);
