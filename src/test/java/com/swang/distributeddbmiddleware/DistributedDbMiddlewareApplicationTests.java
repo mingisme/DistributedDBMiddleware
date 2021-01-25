@@ -9,6 +9,7 @@ import com.swang.ddbm.helo.entity.User;
 import com.swang.ddbm.helo.mapper.AvailableRecMapper;
 import com.swang.ddbm.helo.mapper.RecRegistryMapper;
 import com.swang.ddbm.helo.mapper.UserMapper;
+import com.swang.ddbm.helo.service.IUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +30,9 @@ class DistributedDbMiddlewareApplicationTests {
 
     @Autowired
     private AvailableRecMapper availableRecMapper;
+
+    @Autowired
+    private IUserService userService;
 
     /**
      * 只分库，不分表
@@ -211,5 +215,47 @@ class DistributedDbMiddlewareApplicationTests {
             List<User> userList = userMapper.selectList(queryWrapper);
             userList.forEach(System.out::println);
         }
+    }
+
+    /**
+     * 测试非事务, 部分成功
+     */
+    @Test
+    public void testAddUsersWithoutTx() {
+        Throwable exception = assertThrows(RuntimeException.class,()->{
+            userService.addTwoUsersWithoutTx();
+        });
+        assertNotNull(exception);
+        exception.printStackTrace();
+
+        User user = userMapper.selectById(1);
+        assertNotNull(user);
+    }
+
+    /**
+     * 测试事务, 同一个逻辑表，全部回滚
+     */
+    @Test
+    public void testAddUsersWithTx() {
+        Throwable exception = assertThrows(RuntimeException.class,()->{
+            userService.addTwoUsersWithTx();
+        });
+        assertNotNull(exception);
+        exception.printStackTrace();
+
+        User user = userMapper.selectById(1);
+        assertNull(user);
+    }
+
+    /**
+     * 测试事务, 不通逻辑表，全部回滚
+     */
+    @Test
+    public void testAddRecAndUsersWithTx() {
+        Throwable exception = assertThrows(RuntimeException.class,()->{
+            userService.addOneUserAndOneRecWithTx();
+        });
+        assertNotNull(exception);
+        exception.printStackTrace();
     }
 }

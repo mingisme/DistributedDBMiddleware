@@ -21,3 +21,5 @@ CREATE TABLE `rec_registry` (
   `name` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE UNIQUE INDEX IDX_EMAIL_UIQ USING BTREE ON `user` (email);
