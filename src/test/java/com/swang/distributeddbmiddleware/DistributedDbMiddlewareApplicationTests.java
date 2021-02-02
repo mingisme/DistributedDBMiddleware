@@ -52,7 +52,7 @@ class DistributedDbMiddlewareApplicationTests {
     @Test
     public void testGetUserById() {
         System.out.println(("----- get user by id ------"));
-        User user = userMapper.selectById(560135782296190976L);
+        User user = userMapper.selectById(1356476710047977474L);
         assertNotNull(user);
         System.out.println(user);
     }
@@ -89,8 +89,8 @@ class DistributedDbMiddlewareApplicationTests {
     public void testAddRecRegistry() {
         System.out.println(("----- Add rec registry ------"));
         RecRegistry recRegistry = new RecRegistry();
-        recRegistry.setId("trecs");
-        recRegistry.setName("TRECs.ai");
+        recRegistry.setId("apx");
+        recRegistry.setName("APX TIGR");
         System.out.println(recRegistry);
         recRegistryMapper.insert(recRegistry);
     }
@@ -98,7 +98,7 @@ class DistributedDbMiddlewareApplicationTests {
     @Test
     public void testDelRecRegistry() {
         System.out.println(("----- Delete rec registry ------"));
-        int count = recRegistryMapper.deleteById("trecs");
+        int count = recRegistryMapper.deleteById("apx");
         assertEquals(1, count);
     }
 
@@ -109,7 +109,7 @@ class DistributedDbMiddlewareApplicationTests {
     public void testSelectRecRegistry() {
         System.out.println(("----- Select a registry ------"));
         for (int i = 0; i < 10; i++) {
-            RecRegistry recRegistry = recRegistryMapper.selectById("trecs");
+            RecRegistry recRegistry = recRegistryMapper.selectById("apx");
             assertNotNull(recRegistry);
             System.out.println(recRegistry);
         }
@@ -130,7 +130,7 @@ class DistributedDbMiddlewareApplicationTests {
                 availableRec.setRecId("REC_" + i);
                 availableRec.setAssetName("Asset_"+i);
                 availableRec.setOwnerId(user.getId());
-                availableRec.setRegistryId("trecs");
+                availableRec.setRegistryId("apx");
                 System.out.println(availableRec);
                 availableRecMapper.insert(availableRec);
             }
